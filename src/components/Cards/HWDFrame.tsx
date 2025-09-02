@@ -1,4 +1,4 @@
-import frame from "../../assets/frame.png";
+import frame from "../../assets/Frame.png";
 
 export default function HWDFrame({
   title,

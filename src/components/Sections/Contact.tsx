@@ -1,8 +1,7 @@
-
 export default function Contact() {
   return (
     <div className="p-6 md:p-28 relative contact" id="contact">
-      <p className="p-6 text-xl md:text-3xl text-white">
+      <p className="p-6 md:px-16 text-xl md:text-3xl text-white">
         Get a Free Consultation
       </p>
       <div className="relative z-10">

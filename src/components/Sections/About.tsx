@@ -11,7 +11,7 @@ export default function About() {
         <img src={about} alt="about" className="w-full h-full object-cover" />
       </div>
       <Title>About Us</Title>
-      <p className="text-md md:text-2xl text-left text-accent w-[85%]">
+      <p className="text-md md:text-2xl text-left text-accent md:w-[85%]">
         Founded in 2024,<br></br>we may be new—but we're driven, creative, and
         already making an impact. In just a short time, we've collaborated on
         multiple exciting projects and built strong partnerships.

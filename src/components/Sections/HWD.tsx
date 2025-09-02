@@ -26,7 +26,7 @@ const hwd = [
 
 export default function HWD() {
   return (
-    <div className="p-16 bg-gradient-to-b from-background to-foreground relative">
+    <div className="p-6 md:p-28 bg-gradient-to-b from-background to-foreground relative">
       <Title>How We Develop ?</Title>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 items-center justify-center gap-12">
         {hwd.map((item) => (

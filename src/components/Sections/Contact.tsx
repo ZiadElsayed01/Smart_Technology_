@@ -1,12 +1,13 @@
-import Title from "../common/Title";
 
 export default function Contact() {
   return (
-    <div className="p-16 py-28 bg-background relative contact" id="contact">
+    <div className="p-6 md:p-28 relative contact" id="contact">
+      <p className="p-6 text-xl md:text-3xl text-white">
+        Get a Free Consultation
+      </p>
       <div className="relative z-10">
-        <div className="flex items-center justify-center">
-          <div className="p-10 w-[90%] border border-gray-50 rounded-4xl">
-            <Title>Contact Us</Title>
+        <div className="flex md:flex-row flex-col items-center justify-center">
+          <div className="md:p-10 p-6 w-full md:w-[90%] border border-gray-50 rounded-4xl">
             <form action="" className="lg:w-[70%] text-white">
               <label htmlFor="name" className="text-xl">
                 Full Name

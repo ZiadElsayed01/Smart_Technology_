@@ -19,24 +19,28 @@ interface Feedback {
 function NextArrow(props: { onClick: () => void }) {
   const { onClick } = props;
   return (
-    <div
+    <button
+      type="button"
       onClick={onClick}
-      className="absolute -right-8 md:-right-12 top-1/2 -translate-y-1/2 z-40 cursor-pointer bg-accent rounded-full text-accent-foreground"
+      className="absolute -right-4 md:-right-10 top-1/2 -translate-y-1/2 z-40 cursor-pointer bg-accent rounded-full text-accent-foreground p-2 shadow-md"
+      aria-label="Next"
     >
-      <ChevronRight className="w-8 h-8" />
-    </div>
+      <ChevronRight className="w-6 h-6 md:w-8 md:h-8" />
+    </button>
   );
 }
 
 function PrevArrow(props: { onClick: () => void }) {
   const { onClick } = props;
   return (
-    <div
+    <button
+      type="button"
       onClick={onClick}
-      className="absolute -left-8 md:-left-12 top-1/2 -translate-y-1/2 z-40 cursor-pointer bg-accent rounded-full text-accent-foreground"
+      className="absolute -left-4 md:-left-10 top-1/2 -translate-y-1/2 z-40 cursor-pointer bg-accent rounded-full text-accent-foreground p-2 shadow-md"
+      aria-label="Previous"
     >
-      <ChevronLeft className="w-8 h-8" />
-    </div>
+      <ChevronLeft className="w-6 h-6 md:w-8 md:h-8" />
+    </button>
   );
 }
 
@@ -120,7 +124,7 @@ export default function Testimonials() {
   return (
     <>
       <div
-        className="p-16 py-28 bg-gradient-to-b from-background to-foreground relative text-accent"
+        className="p-6 md:p-28 bg-gradient-to-b from-background to-foreground relative text-accent"
         id="clients"
       >
         <Title>Testimonials</Title>
@@ -139,7 +143,9 @@ export default function Testimonials() {
       </div>
 
       <div className="py-16 bg-gradient-to-b from-background to-foreground relative text-accent text-center w-full overflow-hidden">
-        <h2 className="text-3xl mb-12">Our Clients Around the Arab World</h2>
+        <h2 className="text-xl md:text-3xl mb-12">
+          Our Clients Around the Arab World
+        </h2>
         <Slider {...flagSettings}>
           {flags.map((flag) => (
             <div key={flag.id} className="flex items-center justify-center">

@@ -8,8 +8,8 @@ export default function Hero() {
           <img src={ellipsis} alt="ellipsis" />
         </div>
         <div className="absolute h-full inset-0 bg-[#0f022a]/60 flex items-left justify-center flex-col gap-8 z-40">
-          <div className="px-16 md:w-[800px]">
-            <h1 className="text-2xl md:text-5xl text-center md:text-left font-bold text-white">
+          <div className="px-6 md:px-16 md:w-[800px]">
+            <h1 className="text-xl md:text-5xl text-center md:text-left font-bold text-white">
               Set Off Towards Excellence
             </h1>
             <p className="text-md md:text-2xl text-white my-12 md:w-[75%] mx-auto text-center">

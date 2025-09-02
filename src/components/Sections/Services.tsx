@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import Title from "../common/Title";
 import Slider from "react-slick";
 import ServicesFrame from "../Cards/ServicesFrame";
@@ -8,24 +9,28 @@ import { ChevronRight, ChevronLeft } from "lucide-react";
 function NextArrow(props: { onClick: () => void }) {
   const { onClick } = props;
   return (
-    <div
+    <button
+      type="button"
       onClick={onClick}
-      className="absolute -right-8 md:-right-12 top-1/2 -translate-y-1/2 z-40 cursor-pointer bg-accent rounded-full text-accent-foreground"
+      className="absolute -right-4 md:-right-10 top-1/2 -translate-y-1/2 z-40 cursor-pointer bg-accent rounded-full text-accent-foreground p-2 shadow-md"
+      aria-label="Next"
     >
-      <ChevronRight className="w-8 h-8" />
-    </div>
+      <ChevronRight className="w-6 h-6 md:w-8 md:h-8" />
+    </button>
   );
 }
 
 function PrevArrow(props: { onClick: () => void }) {
   const { onClick } = props;
   return (
-    <div
+    <button
+      type="button"
       onClick={onClick}
-      className="absolute -left-8 md:-left-12 top-1/2 -translate-y-1/2 z-40 cursor-pointer bg-accent rounded-full text-accent-foreground"
+      className="absolute -left-4 md:-left-10 top-1/2 -translate-y-1/2 z-40 cursor-pointer bg-accent rounded-full text-accent-foreground p-2 shadow-md"
+      aria-label="Previous"
     >
-      <ChevronLeft className="w-8 h-8" />
-    </div>
+      <ChevronLeft className="w-6 h-6 md:w-8 md:h-8" />
+    </button>
   );
 }
 
@@ -63,54 +68,54 @@ const services = [
 ];
 
 export default function Services() {
+  const [mounted, setMounted] = useState(false);
+  const [slides, setSlides] = useState(3);
+
+  useEffect(() => {
+    setMounted(true);
+    const calc = () => {
+      const w = window.innerWidth;
+      if (w >= 1280) setSlides(3);
+      else if (w >= 1024) setSlides(2);
+      else setSlides(1);
+    };
+    calc();
+    window.addEventListener("resize", calc);
+    return () => window.removeEventListener("resize", calc);
+  }, []);
+
+  if (!mounted) return null;
+
   const settings = {
-    className: "center",
-    centerMode: true,
     infinite: true,
-    slidesToShow: 3,
     speed: 500,
+    slidesToShow: slides,
+    slidesToScroll: slides > 1 ? 1 : 1,
+    swipeToSlide: true,
+    arrows: true,
     nextArrow: <NextArrow onClick={() => {}} />,
     prevArrow: <PrevArrow onClick={() => {}} />,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 2,
-          centerMode: false,
-        },
-      },
-      {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 1,
-          centerMode: false,
-        },
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          centerMode: false,
-        },
-      },
-    ],
-  };
+  } as const;
 
   return (
     <div
-      className="p-16 py-28 bg-gradient-to-b from-background to-foreground relative text-accent"
+      className="p-6 md:p-28 bg-gradient-to-b from-background to-foreground relative text-accent"
       id="services"
     >
       <Title>Our Services</Title>
-      <Slider {...settings}>
-        {services.map((service) => (
-          <ServicesFrame
-            key={service.id}
-            title={service.title}
-            description={service.description}
-          />
-        ))}
-      </Slider>
+
+      <div className="relative">
+        <Slider key={slides} {...settings}>
+          {services.map((service) => (
+            <div key={service.id} className="px-3 !w-full">
+              <ServicesFrame
+                title={service.title}
+                description={service.description}
+              />
+            </div>
+          ))}
+        </Slider>
+      </div>
     </div>
   );
 }

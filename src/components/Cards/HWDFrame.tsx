@@ -19,7 +19,7 @@ export default function HWDFrame({
           {title}
         </h2>
       </div>
-      <p className="text-accent text-center mt-8 text-xl w-[80%] mx-auto">
+      <p className="text-accent text-center mt-8 text-xl md:w-[80%] mx-auto">
         {description}
       </p>
     </div>
